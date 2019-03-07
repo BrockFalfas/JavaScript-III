@@ -58,15 +58,43 @@ greetJane.sayGoodbye.apply(greetBrock);
 // Principle 1
 
 // code example for Window Binding
+function sayName(name) {
+    console.log(this);
+    return name;
+  }
+  sayName("Brock F");
 
 // Principle 2
 
 // code example for Implicit Binding
+const myObj = {
+    greeting: 'Hello',
+    sayHello: function(name) {
+      console.log(`${this.greeting} my name is ${name}`);
+      console.log(this);
+    }
+  };
+  myObj.sayHello('Brock');
 
 // Principle 3
 
 // code example for New Binding
+function CordialPerson(greeter) {
+    this.greeting = 'Hello ';
+    this.greeter = greeter;
+    this.speak = function() {
+      console.log(this.greeting + this.greeter);
+      console.log(this);
+    };
+  }
+  
+  const jerry = new CordialPerson('Falfas');
+  const newman = new CordialPerson('Brock');
+  
+  newman.speak();
+  newman.speak();
 
 // Principle 4
 
 // code example for Explicit Binding
+brock.speak.call(falfas); falfas.speak.apply(brock);
